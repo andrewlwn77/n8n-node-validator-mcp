@@ -1,0 +1,56 @@
+{
+  "name": "n8n-validator-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for validating n8n nodes against official specifications",
+  "main": "build/index.js",
+  "type": "module",
+  "bin": {
+    "n8n-validator-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node ./build/index.js",
+    "test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest",
+    "test:unit": "NODE_OPTIONS=\"--experimental-vm-modules\" jest tests/unit",
+    "test:integration": "NODE_OPTIONS=\"--experimental-vm-modules\" jest tests/integration",
+    "test:watch": "NODE_OPTIONS=\"--experimental-vm-modules\" jest --watch",
+    "test:coverage": "NODE_OPTIONS=\"--experimental-vm-modules\" jest --coverage",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "pretest": "npm run build",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "mcp",
+    "n8n",
+    "validation",
+    "node",
+    "workflow"
+  ],
+  "author": "n8n-validator-mcp contributors",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.1",
+    "typescript": "^5.8.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.0.4",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.19.8",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^8.57.0",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0"
+  },
+  "files": [
+    "build",
+    "README.md",
+    "LICENSE"
+  ]
+}
