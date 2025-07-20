@@ -80,6 +80,7 @@ mcp-logs/
 workflow-downloader/
 sudo-code/
 .mcp.json.backup
+.mcp.json
 
 # Cache directories
 .cache/

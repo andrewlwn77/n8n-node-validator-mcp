@@ -1,0 +1,44 @@
+{
+  "mcpServers": {    
+    "puppeteer": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ],
+      "transport": {
+        "type": "stdio"
+      },
+      "env": {},
+      "disabled": false,
+      "autoApprove": []
+    },    
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],  
+      "transport": {
+        "type": "stdio"
+      },
+      "env": {},
+      "disabled": false,
+      "autoApprove": []
+    },
+    "n8n-validator": {
+      "command": "node",
+      "args": [
+        "build/index.js"
+      ],
+      "transport": {
+        "type": "stdio"
+      },
+      "env": {
+        "GITHUB_TOKEN": "your_github_token_here"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
