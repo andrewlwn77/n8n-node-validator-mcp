@@ -28,21 +28,103 @@ The n8n Validator MCP provides AI development tools with the capability to valid
 
 ## Installation
 
+### Method 1: Claude Desktop Extensions (Recommended - 2025)
+
+The easiest way to install this MCP server is through Claude Desktop Extensions:
+
+1. **Update Claude Desktop** to the latest version
+2. **Open Settings** → **Extensions** in Claude Desktop
+3. **Search** for "n8n Validator MCP" in the extensions directory
+4. **Click Install** - no configuration required!
+
+Desktop Extensions provide one-click installation with automatic updates and no dependency management.
+
+### Method 2: NPM Installation (Traditional)
+
+For users who prefer npm or need custom configuration:
+
+#### Prerequisites
+- **Node.js 18+** installed on your system
+- **Claude Desktop** app (macOS/Windows)
+- **npm** package manager
+
+#### Install the Package
 ```bash
 npm install -g n8n-validator-mcp
 ```
 
+#### Configure Claude Desktop
+1. **Open Claude Desktop** → **Settings** → **Developer**
+2. **Click "Edit Config"** to open `claude_desktop_config.json`
+3. **Add the server configuration**:
+
+```json
+{
+  "mcpServers": {
+    "n8n-validator": {
+      "command": "n8n-validator-mcp",
+      "args": []
+    }
+  }
+}
+```
+
+4. **Restart Claude Desktop** to load the server
+5. **Verify installation** by looking for the 🔨 hammer icon in Claude Desktop
+
+#### Troubleshooting NPM Installation
+
+**Common Issues:**
+- **Node.js version**: Ensure you have Node.js 18+ installed
+- **Global permissions**: Use `sudo npm install -g n8n-validator-mcp` on Unix systems if needed
+- **Path issues**: Verify npm global bin directory is in your PATH
+- **Restart required**: Always restart Claude Desktop after configuration changes
+
+**Verify Installation:**
+```bash
+# Check if package is installed
+npm list -g n8n-validator-mcp
+
+# Test the binary
+n8n-validator-mcp --help
+```
+
 ## Usage
 
-### With Claude Code
+### With Claude Desktop
 
-The n8n Validator MCP integrates seamlessly with Claude Code. Once installed, you can use natural language commands:
+Once installed via either method, the n8n Validator MCP integrates seamlessly with Claude Desktop. Use natural language commands:
 
 ```
 "Validate this GitHub node implementation"
 "Show me what's wrong with my Slack node"
 "Compare my local node with the official specification"
 "Fetch the specification for the HTTP Request node"
+```
+
+### Example Validation Output
+
+```
+# n8n Node Validation Result
+
+## Validation Status: ❌ INVALID
+## Compliance Score: 60/100
+
+### Errors (4)
+- **missing_property** at `displayName`: Required property 'displayName' is missing
+- **missing_property** at `description`: Required property 'description' is missing
+- **invalid_value** at `name`: Node name 'Template Selection Trigger' does not match specification 'webhook'
+  Expected: "webhook"
+  Actual: "Template Selection Trigger"
+- **invalid_value** at `name`: Node name must start with a letter and contain only alphanumeric characters
+  Expected: "alphanumeric name starting with letter"
+  Actual: "Template Selection Trigger"
+
+### Summary
+Your n8n node implementation has 4 errors that need to be fixed.
+
+### Recommendations
+Please fix the errors listed above to ensure your node works correctly with n8n.
 ```
 
 ### Direct Usage

@@ -1,19 +1,13 @@
 export default {
-  preset: 'ts-jest',
   testEnvironment: 'node',
-  roots: ['<rootDir>/tests'],
-  testMatch: ['**/__tests__/**/*.ts', '**/?(*.)+(spec|test).ts'],
-  transform: {
-    '^.+\\.ts$': 'ts-jest'
-  },
-  moduleNameMapping: {
-    '^(\\.{1,2}/.*)\\.js$': '$1'
-  },
+  roots: ['<rootDir>/tests/build'],
+  testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
   collectCoverageFrom: [
-    'src/**/*.ts',
-    '!src/**/*.d.ts',
-    '!src/**/*.test.ts',
-    '!src/**/*.spec.ts'
+    'build/**/*.js',
+    '!build/**/*.d.ts',
+    '!build/**/*.test.js',
+    '!build/**/*.spec.js',
+    '!build/index.js'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html']

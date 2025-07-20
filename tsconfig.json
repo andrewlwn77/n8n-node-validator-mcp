@@ -19,7 +19,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "lib": ["ES2022", "DOM"],
-    "moduleResolution": "node"
   },
   "include": [
     "src/**/*"
